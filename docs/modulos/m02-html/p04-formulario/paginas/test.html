@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Página auxiliar de Clínica Veterinaria ConSentidos para comprobar las 
+          rutas relativas, los recursos y la visualización de contenido HTML incrustado.">
+    <meta name="author" content="Cristian Torres">
+
+    <title>Página de prueba | ConSentidos</title>
+
+    <link rel="icon" href="../assets/img/logo-consentidos.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/consentidos.css">
+</head>
+
+<body>
+    <a href="#contenido">Saltar al contenido</a>
+
+    <header id="inicio">
+        <img src="../assets/img/logo-consentidos.svg" alt="" width="64" height="64">
+
+        <hgroup>
+            <h1>Página auxiliar de prueba</h1>
+            <p>Clínica Veterinaria ConSentidos</p>
+        </hgroup>
+
+        <!-- Tus datos: siempre arriba, nunca en el pie -->
+        <p>
+            Cristian Torres<br>
+            4GS122-17
+        </p>
+    </header>
+
+    <nav aria-label="Navegación del sitio">
+        <h2>El sitio</h2>
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../servicios.html">Servicios</a></li>
+            <li><a href="../componentes.html">Guía de componentes</a></li>
+            <li><a href="../tarifas.html">Tarifas</a></li>
+            <li><a href="../cita.html">Solicitar cita</a></li>
+            <li><a href="test.html">Página de prueba</a></li>
+        </ul>
+    </nav>
+
+    <main id="contenido">
+        <p>
+            Esta página auxiliar permite comprobar que los enlaces a las hojas de estilo y 
+            los recursos del sitio funcionan correctamente desde una carpeta diferente.
+        </p>
+
+        <p>
+            También sirve como ejemplo de una página HTML que puede incrustarse dentro de 
+            otra mediante el elemento iframe, conservando su propio contenido y presentación.
+        </p>
+
+        <figure>
+            <img src="../assets/img/luna.svg"
+                 alt="Ilustración de Luna, una gata gris atigrada, sentada"
+                 width="200" height="200" 
+                 loading="lazy">
+            <figcaption>La imagen también se alcanza subiendo un nivel.</figcaption>
+        </figure>
+
+        <p>
+            <a href="../index.html">Volver al inicio del sitio</a>
+        </p>
+    </main>
+
+    <aside>
+        <h2>Horario de atención</h2>
+        <p>
+            Lunes a viernes de 8:00 a. m. a 6:00 p. m.<br>
+            Sábados de 8:00 a. m. a 12:00 m.<br>
+            Urgencias: las 24 horas por teléfono.
+        </p>
+    </aside>
+
+    <footer>
+        <address>
+            <strong>Clínica Veterinaria ConSentidos</strong><br>
+            Avenida Central, Santiago de Veraguas, Panamá<br>
+            <a href="tel:+50799800000">+507 998-0000</a> |
+            <a href="mailto:citas@consentidos.example">citas@consentidos.example</a>
+        </address>
+
+        <p>
+            Última actualización:
+            <time datetime="2026-11-20">20 de noviembre de 2026</time>
+        </p>
+        
+        <p><a href="#inicio">Volver arriba</a></p>
+
+        <p>
+            <small>
+                &copy; 2026 Clínica Veterinaria ConSentidos. Proyecto académico del
+                curso Desarrollo de Software V, Universidad Tecnológica de Panamá,
+                Centro Regional de Veraguas. Los datos de contacto son ficticios.
+            </small>
+        </p>
+    </footer>
+</body>
