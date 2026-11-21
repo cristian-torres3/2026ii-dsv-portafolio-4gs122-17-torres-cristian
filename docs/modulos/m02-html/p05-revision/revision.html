@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     Informe de revisión de ConSentidos
+     Práctica 5 · Secciones 2.10 y 2.11 de la Unidad 2.
+     Archivo base: completa las partes marcadas con comentarios y pon la
+     fecha real de tu revisión en los dos elementos time.
+     ===================================================================== -->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   script-src 'self';
+                   style-src 'self' https://fonts.googleapis.com;
+                   font-src https://fonts.gstatic.com;
+                   img-src 'self';
+                   media-src 'self';
+                   object-src 'self';
+                   frame-src 'self' https://www.openstreetmap.org;
+                   base-uri 'self';
+                   form-action 'self';">
+    <meta name="description"
+          content="Informe de revisión de seguridad y calidad del sitio de la Clínica Veterinaria ConSentidos.">
+    <meta name="author" content="Cristian Torres">
+
+    <title>Informe de revisión | Clínica Veterinaria ConSentidos</title>
+
+    <link rel="icon" href="assets/img/logo-consentidos.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/consentidos.css">
+</head>
+
+<body>
+
+    <a href="#contenido">Saltar al contenido</a>
+
+    <header id="inicio">
+        <img src="assets/img/logo-consentidos.svg"
+             alt="" width="64" height="64">
+
+        <hgroup>
+            <h1>Informe de revisión</h1>
+            <p>Seguridad y calidad del sitio</p>
+        </hgroup>
+
+        <p>
+            Cristian Torres<br>
+            4GS122-17
+        </p>
+    </header>
+
+    <nav aria-label="Navegación del sitio">
+        <h2>El sitio</h2>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="componentes.html">Guía de componentes</a></li>
+            <li><a href="tarifas.html">Tarifas</a></li>
+            <li><a href="cita.html">Solicitar cita</a></li>
+            <li><a href="paginas/test.html">Página de prueba</a></li>
+        </ul>
+    </nav>
+
+    <main id="contenido">
+
+        <p>
+            Revisión del sitio completo, realizada el
+            <time datetime="2026-11-20">20 de noviembre de 2026</time>.
+            Se consideran las seis páginas principales del sitio,
+            la página auxiliar de prueba y este informe.
+        </p>
+
+        <!-- =====================================================
+             1. POLÍTICA DE SEGURIDAD DE CONTENIDOS
+             ===================================================== -->
+
+        <section id="csp">
+
+            <h2>Política de seguridad de contenidos</h2>
+
+            <p>
+                Construí la política partiendo de
+                <code>default-src 'self'</code> para permitir los recursos
+                del propio sitio. Después agregué las excepciones necesarias
+                para Google Fonts y los mapas de OpenStreetMap. Para los
+                demás recursos mantuve restricciones que evitan cargar
+                contenido externo que el sitio no necesita.
+            </p>
+
+            <div tabindex="0" role="region" aria-labelledby="cap-csp">
+
+                <table>
+                    <caption id="cap-csp">
+                        Directivas de la política y por qué están
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Directiva</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Por qué</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row"><code>default-src</code></th>
+                            <td><code>'self'</code></td>
+                            <td>
+                                Establece como regla general que los recursos
+                                deben proceder del propio sitio.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>script-src</code></th>
+                            <td><code>'self'</code></td>
+                            <td>
+                                Permite cargar los archivos JavaScript del
+                                sitio, como <code>componentes.js</code> y <code>cita.js</code>,
+                                y bloquea los scripts escritos directamente
+                                en el HTML.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>style-src</code></th>
+                            <td><code>'self' https://fonts.googleapis.com</code></td>
+                            <td>
+                                Permite cargar las hojas de estilo locales
+                                y los estilos externos utilizados por
+                                Google Fonts.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>font-src</code></th>
+                            <td><code>https://fonts.gstatic.com</code></td>
+                            <td>
+                                Autoriza la carga de las tipografías de
+                                Google Fonts utilizadas en el sitio.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>img-src</code></th>
+                            <td><code>'self'</code></td>
+                            <td>
+                                Permite cargar las imágenes y el logotipo
+                                almacenados en la carpeta del sitio.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>media-src</code></th>
+                            <td><code>'self'</code></td>
+                            <td>
+                                Permite cargar archivos de audio y video
+                                alojados en el propio sitio.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>object-src</code></th>
+                            <td><code>'self'</code></td>
+                            <td>
+                                Permite mostrar documentos, como archivos
+                                PDF, procedentes del propio sitio.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>frame-src</code></th>
+                            <td>
+                                <code>'self' https://www.openstreetmap.org</code>
+                            </td>
+                            <td>
+                                Permite incrustar páginas del propio sitio
+                                y mapas de OpenStreetMap mediante <code>&lt;iframe&gt;</code>.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>base-uri</code></th>
+                            <td><code>'self'</code></td>
+                            <td>
+                                Limita las direcciones base que puede
+                                establecer la etiqueta base al propio sitio.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>form-action</code></th>
+                            <td><code>'self'</code></td>
+                            <td>
+                                Restringe el envío de los formularios a
+                                direcciones del propio sitio.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <h3>Limitación de frame-ancestors</h3>
+
+            <p>
+                La directiva <code>frame-ancestors</code> no está activa
+                en el sitio porque solo puede configurarse mediante una
+                cabecera HTTP del servidor, no mediante una etiqueta
+                <code>meta</code>. Como GitHub Pages no permite configurar
+                esta cabecera directamente, el sitio no cuenta con esta
+                protección contra el clickjacking. Identificar las
+                protecciones que no están disponibles también forma parte
+                de una revisión de seguridad.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             2. REVISIÓN DE ENLACES Y CONTENIDO INCRUSTADO
+             ===================================================== -->
+
+        <section id="revision-enlaces">
+            <h2>Revisión de enlaces y contenido incrustado</h2>
+
+            <div tabindex="0" role="region" aria-labelledby="cap-enlaces">
+
+                <table>
+                    <caption id="cap-enlaces">
+                        Resultados de la revisión de recursos externos
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Búsqueda</th>
+                            <th scope="col">Resultado</th>
+                            <th scope="col">Observación</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row"><code>target="_blank"</code></th>
+                            <td>Revisado</td>
+                            <td>
+                                Los enlaces externos revisados en index.html
+                                y componentes.html utilizan
+                                <code>rel="noopener noreferrer"</code>.
+                                Esto evita que la página abierta pueda
+                                manipular la página de origen.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>&lt;iframe&gt;</code></th>
+                            <td>Revisado</td>
+                            <td>
+                                El marco interno tiene un título descriptivo.
+                                El mapa externo también tiene <code>title</code> y
+                                <code>sandbox</code>. Su política de referencia debe
+                                permitir el envío de un Referer válido.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>referrerpolicy</code></th>
+                            <td>Revisado</td>
+                            <td>
+                                El mapa de OpenStreetMap utiliza
+                                actualmente <code>no-referrer</code>.
+                                Se debe cambiar por
+                                <code>strict-origin-when-cross-origin</code>
+                                para no bloquear el encabezado Referer.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><code>script src="https://</code></th>
+                            <td>No aplica</td>
+                            <td>
+                                No se encontraron scripts externos.
+                                Los archivos JavaScript utilizados por
+                                el sitio son locales.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                <code>integrity</code> y <code>crossorigin</code>
+                            </th>
+                            <td>No aplica</td>
+                            <td>
+                                No se utilizan scripts externos de CDN
+                                que requieran comprobación de integridad
+                                mediante Subresource Integrity.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             3. LISTA DE VERIFICACIÓN
+             ===================================================== -->
+
+        <section id="verificacion">
+            <h2>Lista de verificación</h2>
+
+            <div tabindex="0" role="region"
+                 aria-labelledby="cap-verificacion">
+
+                <table>
+                    <caption id="cap-verificacion">
+                        Comprobaciones generales del sitio
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Comprobación</th>
+                            <th scope="col">Resultado</th>
+                            <th scope="col">Observación</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <th scope="row">
+                                Un solo <code>h1</code> y jerarquía
+                                de encabezados
+                            </th>
+                            <td>Revisado</td>
+                            <td>
+                                Todas las páginas presentan un
+                                encabezado principal y utilizan títulos
+                                para organizar el contenido.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                <code>alt</code> en imágenes y
+                                <code>title</code> en los <code>iframe</code>
+                            </th>
+                            <td>Revisado</td>
+                            <td>
+                                Las imágenes informativas tienen texto
+                                alternativo y los marcos incluyen títulos.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                Controles con <code>label</code> y
+                                <code>name</code>
+                            </th>
+                            <td>Revisado</td>
+                            <td>
+                                Los controles visibles del formulario
+                                tienen etiquetas asociadas y nombres.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                Tablas con <code>caption</code> y
+                                encabezados <code>scope</code>
+                            </th>
+                            <td>Revisado</td>
+                            <td>
+                                Las tablas de tarifas incluyen títulos
+                                y encabezados identificados.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                Enlaces externos con
+                                <code>rel="noopener noreferrer"</code>
+                            </th>
+                            <td>Revisado</td>
+                            <td>
+                                Los enlaces externos que utilizan
+                                target="_blank" incluyen los atributos
+                                de seguridad correspondientes.
+                            </td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">Recorrido con teclado y foco visible</th>
+                          <td>Revisado</td>
+                          <td>
+                              Se comprobó la navegación con Tab y Mayús+Tab en todas las páginas.
+                              El foco permanece visible y los elementos interactivos funcionan correctamente.
+                          </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Rutas y enlaces del sitio</th>
+                            <td>Revisado</td>
+                            <td>
+                                Se verificaron los enlaces y las rutas de navegación.
+                                Las páginas y los recursos de la carpeta assets funcionan correctamente.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Consola sin errores de la política CSP</th>
+                            <td>Revisado</td>
+                            <td>
+                                Se revisó la consola del navegador y se comprobó que los recursos
+                                permitidos se cargan correctamente, sin errores de la política CSP.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             4. CALIDAD: VALIDADOR, TECLADO Y LIGHTHOUSE
+             ===================================================== -->
+
+        <section id="calidad">
+            <h2>Calidad del sitio: validador, teclado y Lighthouse</h2>
+
+            <div tabindex="0" role="region"
+                 aria-labelledby="cap-resultados">
+
+                <table>
+                    <caption id="cap-resultados">
+                        Resultados de calidad de las siete páginas
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Página</th>
+                            <th scope="col">Validador HTML</th>
+                            <th scope="col">Teclado</th>
+                            <th scope="col">Lighthouse: Accessibility</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <th scope="row">index.html</th>
+                            <td>Sin errores</td>
+                            <td>Conforme</td>
+                            <td>100</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">servicios.html</th>
+                            <td>Sin errores</td>
+                            <td>Conforme</td>
+                            <td>100</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">componentes.html</th>
+                            <td>Sin errores</td>
+                            <td>Conforme</td>
+                            <td>100</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">tarifas.html</th>
+                            <td>Sin errores</td>
+                            <td>Conforme</td>
+                            <td>100</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">cita.html</th>
+                            <td>Sin errores</td>
+                            <td>Conforme</td>
+                            <td>100</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">paginas/test.html</th>
+                            <td>Sin errores</td>
+                            <td>Conforme</td>
+                            <td>100</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">revision.html</th>
+                            <td>Sin errores</td>
+                            <td>Conforme</td>
+                            <td>100</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             5. VALIDACIÓN DEL NAVEGADOR
+             ===================================================== -->
+
+        <section id="validacion-cliente">
+            <h2>La validación del navegador no protege</h2>
+            <p>
+                En el formulario de solicitud de cita utilicé atributos
+                como <code>required</code>, <code>pattern</code>,
+                <code>min</code> y <code>max</code> para comprobar que
+                los datos tengan el formato esperado. Sin embargo,
+                estas validaciones se realizan en el navegador y
+                pueden modificarse o eliminarse mediante las
+                herramientas de desarrollo. Por eso, no sustituyen
+                la validación que debe realizar un servidor.
+            </p>
+            <p>
+                Además, el formulario utiliza
+                <code>action="/api/citas"</code>, pero GitHub Pages
+                es un servicio de alojamiento estático y no dispone
+                de un servidor que reciba y almacene las solicitudes.
+                Por esta razón, el formulario permite comprobar
+                la validación del navegador, pero no completa
+                el envío de una cita.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <address>
+            <strong>Clínica Veterinaria ConSentidos</strong><br>
+            Avenida Central, Santiago de Veraguas, Panamá<br>
+            <a href="tel:+50799800000">+507 998-0000</a> |
+            <a href="mailto:citas@consentidos.example">
+                citas@consentidos.example
+            </a>
+        </address>
+
+        <p>
+            Última actualización:
+            <time datetime="2026-11-20">20 de noviembre de 2026</time>.
+        </p>
+
+        <p><a href="#inicio">Volver arriba</a></p>
+
+        <p>
+            <small>
+                &copy; 2026 Clínica Veterinaria ConSentidos.
+                Proyecto académico del curso Desarrollo de Software V,
+                Universidad Tecnológica de Panamá, Centro Regional
+                de Veraguas. Los datos de contacto son ficticios.
+            </small>
+        </p>
+    </footer>
+</body>
