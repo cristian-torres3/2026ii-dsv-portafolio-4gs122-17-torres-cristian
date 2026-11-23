@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self'; 
+        img-src 'self'; 
+        style-src 'self'; 
+        base-uri 'self'; 
+        form-action 'self'">
+  <meta name="description" content="Catálogo de la Colección General y consulta de préstamos activos de la Biblioteca Universitaria.">
+  <meta name="author" content="Equipo 06, Grupo 4GS122">
+  <title>Catálogo y préstamos | Biblioteca Universitaria</title>
+  <link rel="icon" href="assets/img/logo-biblioteca.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/biblioteca-base.css">
+</head>
+<body id="top">
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <img src="assets/img/logo-biblioteca.svg" alt="">
+    <hgroup>
+      <h1>Catálogo y préstamos</h1>
+      <p>Consulta de ejemplares en sala, disponibilidad a domicilio y préstamos activos.</p>
+    </hgroup>
+    <p>
+      Equipo 06 &middot; Grupo 4GS122<br>
+      Luis Diaz &middot; 4GS122-10<br>
+      Keneth Hernandez &middot; 4GS122-12<br>
+      Cristian Torres &middot; 4GS122-17
+    </p>
+
+    <nav aria-label="Navegación principal">
+      <h2>La biblioteca</h2>
+      <ul>
+        <li><a href="index.html">Préstamo a domicilio</a></li>
+        <li><a href="catalogo.html" aria-current="page">Catálogo y préstamos</a></li>
+        <li><a href="prestamo.html">Solicitar un préstamo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <p>El ejemplar e.1 de cada título se consulta en sala. Los demás se prestan a domicilio mientras estén disponibles.</p>
+
+    <section id="catalogo" aria-labelledby="tit-catalogo">
+      <h2 id="tit-catalogo">Colección General</h2>
+
+      <div tabindex="0" role="region" aria-labelledby="cap-catalogo">
+        <table>
+          <caption id="cap-catalogo">Títulos de la Colección General y sus ejemplares</caption>
+          <colgroup span="3"></colgroup>
+          <colgroup></colgroup>
+          <colgroup span="2"></colgroup>
+          <thead>
+            <tr>
+              <th scope="col" rowspan="2" id="col-titulo">Título</th>
+              <th scope="col" rowspan="2" id="col-autor">Autor</th>
+              <th scope="col" rowspan="2" id="col-anio">Año</th>
+              <th scope="col" rowspan="2" id="ej-sala">En sala (e.1)</th>
+              <th scope="colgroup" colspan="2" id="ej-dom">A domicilio (e.2 en adelante)</th>
+            </tr>
+            <tr>
+              <th scope="col" id="ej-dom-total">Ejemplares</th>
+              <th scope="col" id="ej-dom-disp">Disponibles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" id="lib-1"><cite>Clean Code</cite></th>
+              <td headers="lib-1 col-autor">Robert C. Martin</td>
+              <td headers="lib-1 col-anio">2008</td>
+              <td headers="lib-1 ej-sala">1</td>
+              <td headers="lib-1 ej-dom ej-dom-total">3</td>
+              <td headers="lib-1 ej-dom ej-dom-disp">2</td>
+            </tr>
+            <tr>
+              <th scope="row" id="lib-2"><cite>Eloquent JavaScript</cite></th>
+              <td headers="lib-2 col-autor">Marijn Haverbeke</td>
+              <td headers="lib-2 col-anio">2024</td>
+              <td headers="lib-2 ej-sala">1</td>
+              <td headers="lib-2 ej-dom ej-dom-total">2</td>
+              <td headers="lib-2 ej-dom ej-dom-disp">0</td>
+            </tr>
+            <tr>
+              <th scope="row" id="lib-3"><cite>HTML and CSS: Design and Build Websites</cite></th>
+              <td headers="lib-3 col-autor">Jon Duckett</td>
+              <td headers="lib-3 col-anio">2011</td>
+              <td headers="lib-3 ej-sala">1</td>
+              <td headers="lib-3 ej-dom ej-dom-total">4</td>
+              <td headers="lib-3 ej-dom ej-dom-disp">3</td>
+            </tr>
+            <tr>
+              <th scope="row" id="lib-4"><cite>Fundamentos de bases de datos</cite></th>
+              <td headers="lib-4 col-autor">Abraham Silberschatz</td>
+              <td headers="lib-4 col-anio">2014</td>
+              <td headers="lib-4 ej-sala">1</td>
+              <td headers="lib-4 ej-dom ej-dom-total">2</td>
+              <td headers="lib-4 ej-dom ej-dom-disp">1</td>
+            </tr>
+            <tr>
+              <th scope="row" id="lib-5"><cite>Ingeniería del software</cite></th>
+              <td headers="lib-5 col-autor">Ian Sommerville</td>
+              <td headers="lib-5 col-anio">2011</td>
+              <td headers="lib-5 ej-sala">1</td>
+              <td headers="lib-5 ej-dom ej-dom-total">3</td>
+              <td headers="lib-5 ej-dom ej-dom-disp">1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="mis-prestamos" aria-labelledby="tit-prestamos">
+      <h2 id="tit-prestamos">Mis préstamos</h2>
+
+      <div tabindex="0" role="region" aria-labelledby="cap-prestamos">
+        <table aria-describedby="nota-renovaciones">
+          <caption id="cap-prestamos">Préstamos activos de la cuenta</caption>
+          <thead>
+            <tr>
+              <th scope="col">Título</th>
+              <th scope="col">Ejemplar</th>
+              <th scope="col">Prestado el</th>
+              <th scope="col">Devolver el</th>
+              <th scope="col">Renovaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><cite>Clean Code</cite></th>
+              <td>e.2</td>
+              <td><time datetime="2026-11-03">3 nov. 2026</time></td>
+              <td><time datetime="2026-11-24">24 nov. 2026</time></td>
+              <td>1 de 3</td>
+            </tr>
+            <tr>
+              <th scope="row"><cite>Fundamentos de bases de datos</cite></th>
+              <td>e.3</td>
+              <td><time datetime="2026-10-20">20 oct. 2026</time></td>
+              <td><time datetime="2026-11-27">27 nov. 2026</time></td>
+              <td>3 de 3</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row" colspan="4">Préstamos activos</th>
+              <td>2</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p id="nota-renovaciones">Cada préstamo se renueva hasta tres veces, siempre que la cuenta no tenga adeudos ni multas. El segundo préstamo ya no admite más renovaciones.</p>
+    </section>
+  </main>
+
+    <footer>
+    <address>
+      Biblioteca Universitaria<br>
+      Centro Regional de Veraguas, Santiago, Panamá<br>
+      <a href="mailto:prestamos@biblioteca.example">prestamos@biblioteca.example</a>
+    </address>
+    <p>Última actualización: <time datetime="2026-11-23">23 de noviembre de 2026</time>.</p>
+    <p><a href="#top">Volver arriba</a></p>
+    <p>Proyecto académico del curso Desarrollo de Software V, Universidad Tecnológica de Panamá, Centro Regional de Veraguas. El catálogo, los préstamos y los datos de contacto son ficticios.</p>
+  </footer>  
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+        img-src 'self';
+        style-src 'self';
+        base-uri 'self';
+        form-action 'self'">
+    <meta name="description"
+          content="Solicita el préstamo a domicilio de libros de la 
+          biblioteca universitaria de manera sencilla y accesible.">
+    <meta name="author" content="Equipo 06, Grupo 4GS122">
+
+    <title>Préstamo | Biblioteca Universitaria</title>
+
+    <link rel="icon" href="assets/img/logo-biblioteca.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/biblioteca-base.css">
+</head>
+
+<body>
+    <a href="#contenido">Saltar al contenido</a>
+
+    <header id="inicio">
+        <img src="assets/img/logo-biblioteca.svg" alt="" width="64" height="64">
+
+        <hgroup>
+            <h1>Solicitar un préstamo</h1>
+            <p>Biblioteca Universitaria</p>
+        </hgroup>
+
+        <p>
+            Equipo 06 &middot; Grupo 4GS122<br>
+            Luis Diaz &middot; 4GS122-10<br>
+            Keneth Hernandez &middot; 4GS122-12<br>
+            Cristian Torres &middot; 4GS122-17
+        </p> 
+    </header>
+
+    <nav aria-label="Navegación del sitio">
+        <h2>La biblioteca</h2>
+
+        <ul>
+            <li><a href="index.html">Préstamo a domicilio</a></li>
+            <li><a href="catalogo.html">Catálogo y préstamos</a></li>
+            <li><a href="prestamo.html">Solicitar un préstamo</a></li>
+        </ul>
+    </nav>
+
+    <main id="contenido">
+        <form action="/api/prestamos" method="post" enctype="multipart/form-data"
+            name="solicitud-prestamo" autocomplete="on">
+
+            <fieldset>
+                <legend>Datos del usuario</legend>
+
+                <label for="nombre">Nombre completo *</label>
+                <input id="nombre" name="nombre" type="text" autocomplete="on"
+                    minlength="5" maxlength="60" aria-describedby="ayuda-nombre" required>
+                <p id="ayuda-nombre">
+                    Ingrese sus dos nombres y sus dos apellidos. 
+                    Ejemplo: María Fernanda González Rodríguez.
+                </p>
+
+                <label for="codigo">Código del usuario *</label>
+                <input id="codigo" name="codigo" type="text"
+                    pattern="[0-9]{8}"
+                    title="El código debe contener exactamente 8 dígitos numéricos."
+                    inputmode="numeric" aria-describedby="ayuda-codigo" required>
+                <p id="ayuda-codigo">
+                    Ingrese su código universitario de 8 dígitos, sin espacios ni letras.
+                    Ejemplo: 12345678.
+                </p>
+
+                <label for="correo">Correo institucional *</label>
+                <input id="correo" name="correo" type="email"
+                    pattern="[a-zA-Z0-9._%+-]+@utp\.ac\.pa"
+                    aria-describedby="ayuda-correo" required>
+                <p id="ayuda-correo">
+                    Ingrese su correo institucional válido.
+                    Ejemplo: usuario@utp.ac.pa
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>El libro</legend>
+
+                <label for="titulo">Título del libro *</label>
+                <input id="titulo" name="titulo" type="text" list="titulos-libros"
+                    aria-describedby="ayuda-titulo" required>
+                <datalist id="titulos-libros">
+                    <option value="Clean Code">
+                    <option value="Eloquent JavaScript">
+                    <option value="HTML and CSS: Design and Build Websites">
+                    <option value="Fundamentos de bases de datos">
+                    <option value="Ingeniería del software">
+                </datalist>
+                <p id="ayuda-titulo">
+                    Escriba o seleccione el título del libro que desea solicitar.
+                    Puede elegir entre los títulos disponibles en el catálogo.
+                </p>
+
+                <fieldset>
+                    <legend>Ejemplar *</legend>
+
+                    <input id="ej-1" name="ejemplar" type="radio" value="e1"
+                        disabled aria-describedby="ayuda-ej-1">
+                    <label for="ej-1">e.1</label>
+
+                    <input id="ej-2" name="ejemplar" type="radio" value="e2" required>
+                    <label for="ej-2">e.2</label>
+
+                    <input id="ej-3" name="ejemplar" type="radio" value="e3">
+                    <label for="ej-3">e.3</label>
+
+                    <p id="ayuda-ej-1">
+                        El ejemplar e.1 no se presta a domicilio,
+                        ya que está reservado para consulta en sala.
+                    </p>
+                </fieldset>
+
+                <label for="retiro">Fecha de retiro *</label>
+                <input id="retiro" name="retiro" type="date" min="2026-11-23" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Condiciones</legend>
+
+                <input id="sin-adeudos" name="sin_adeudos" type="checkbox" value="acepto" required>
+                <label for="sin-adeudos">
+                    Declaro que no tengo adeudos ni multas pendientes
+                    con la biblioteca.
+                </label>
+
+                <input id="reglamento" name="reglamento" type="checkbox" value="acepto" required>
+                <label for="reglamento">
+                    He leído y acepto las <a href="index.html#renovaciones">condiciones de renovación del préstamo</a>.
+                </label>
+
+                <label for="observaciones">Observaciones (opcional)</label>
+                <textarea id="observaciones" name="observaciones" rows="4" maxlength="500"
+                    aria-describedby="ayuda-observaciones"></textarea>
+                <p id="ayuda-observaciones">
+                    Puede agregar alguna observación relacionada
+                    con su solicitud. Máximo 500 caracteres.
+                </p>
+            </fieldset>
+
+            <button type="submit">Enviar solicitud</button>
+            <button type="reset">Borrar el formulario</button>
+        </form>
+    </main>
+    
+    <footer>
+        <address>
+            <strong>Biblioteca Universitaria</strong><br>
+            Centro Regional de Veraguas, Santiago, Panamá<br>
+            <a href="mailto:prestamos@biblioteca.example">prestamos@biblioteca.example</a>
+        </address>
+
+        <p>
+            Última actualización:
+            <time datetime="2026-11-23">23 de noviembre de 2026.</time>
+        </p>
+
+        <p><a href="#inicio">Volver arriba</a></p>
+
+        <p>
+            <small>
+                Proyecto académico del curso Desarrollo de Software V, Universidad Tecnológica de Panamá, 
+                Centro Regional de Veraguas. El catálogo, los préstamos y los datos de contacto son ficticios.
+            </small>
+        </p>
+    </footer>
+</body>
+</html>
